@@ -42,15 +42,15 @@ async function getPost(slugs: string): Promise<Post | null> {
   } : null;
 }
 
-type PageProps = {
+interface PageProps {
   params: {
     slug: string;
   };
-};
+}
 
-export default async function PostPage({ params }: PageProps) {
+export default async function PostPage({ params }: { params: { slug: string } }) {
   const post = await getPost(params.slug);
-  
+
   if (!post) {
     return (
       <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
@@ -114,11 +114,11 @@ export default async function PostPage({ params }: PageProps) {
 
             {/* Post Content */}
             <div className="prose dark:prose-invert max-w-none">
-             <p>{post.Text}</p>
+              <p>{post.Text}</p>
             </div>
           </div>
         </article>
       </main>
-    </div> 
+    </div>
   );
 }
