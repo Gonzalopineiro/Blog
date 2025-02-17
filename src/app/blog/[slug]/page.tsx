@@ -43,7 +43,12 @@ async function getPost(slugs: string): Promise<Post | null> {
 }
 
 
-export default async function PostPage({ params }: { params: { slug: string } }) {
+interface PageProps {
+  params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
+
+export default async function PostPage({ params }: PageProps) {
   const post = await getPost(params.slug);
 
   if (!post) {
