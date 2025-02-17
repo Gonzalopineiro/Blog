@@ -30,7 +30,11 @@ async function getPost(slugs: string) {
   } : null;
 }
 
-export default async function PostPage({ params }: { params: { slug: string } }) {
+export default async function PostPage({ 
+  params 
+}: { 
+  params: { slug: string } 
+}) {
   const post = await getPost(params.slug);
   
   if (!post) {
