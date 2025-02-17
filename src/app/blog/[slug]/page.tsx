@@ -16,7 +16,7 @@ interface Post {
   Text: string;
 }
 
-async function getPost(slugs: string): Promise<Post | null> {
+async function getPost(slugs: string) {
   const { data: post, error } = await supabase
     .from('Post')
     .select('*')
