@@ -3,18 +3,6 @@ import Image from "next/image";
 import { formatExcerpt } from "@/utils/textFormatter";
 import supabase from "@/supabase-client";
 
-interface Post {
-  title: string;
-  excerpt: string;
-  coverImage: string;
-  readingTime: string;
-  slug: string;
-  authorName: string;
-  authorPfp: string;
-  publishedAt: string;
-  category: string;
-  Text: string;
-}
 
 async function getPost(slugs: string) {
   const { data: post, error } = await supabase
