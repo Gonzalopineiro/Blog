@@ -3,7 +3,20 @@ import Image from "next/image";
 import { formatExcerpt } from "@/utils/textFormatter";
 import supabase from "@/supabase-client";
 
-async function getPost(slugs: string) {
+interface Post {
+  title: string;
+  excerpt: string;
+  coverImage: string;
+  readingTime: string;
+  slug: string;
+  authorName: string;
+  authorPfp: string;
+  publishedAt: string;
+  category: string;
+  Text: string;
+}
+
+async function getPost(slugs: string): Promise<Post | null> {
   const { data: post, error } = await supabase
     .from('Post')
     .select('*')
@@ -15,7 +28,6 @@ async function getPost(slugs: string) {
     return null;
   }
 
-  // Transform database post to match Post interface
   return post ? {
     title: post.Title || '',
     excerpt: formatExcerpt(post.text) || '',
@@ -30,11 +42,13 @@ async function getPost(slugs: string) {
   } : null;
 }
 
-export default async function PostPage({ 
-  params 
-}: { 
-  params: { slug: string } 
-}) {
+interface PageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export default async function PostPage({ params }: PageProps) {
   const post = await getPost(params.slug);
   
   if (!post) {
@@ -47,6 +61,7 @@ export default async function PostPage({
       </div>
     );
   }
+
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
       <main className="max-w-4xl mx-auto px-8 py-16">
