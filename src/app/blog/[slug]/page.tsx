@@ -42,14 +42,18 @@ async function getPost(slugs: string): Promise<Post | null> {
   } : null;
 }
 
-
-interface PageProps {
-  params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
+export interface NextPageProps<SlugType = string> {
+	params: { slug: SlugType };
+	searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-export default async function PostPage({ params }: PageProps) {
-  const post = await getPost(params.slug);
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const post = await getPost((await params).slug);
 
   if (!post) {
     return (
