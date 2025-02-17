@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Post } from "@/types/post";
 import PostCard from "./PostCard";
 
@@ -10,7 +11,7 @@ export default function RecentPosts({ posts }: { posts: Post[] }) {
           <span className="w-2 h-8 bg-purple-600 dark:bg-purple-400 rounded-full"></span>
           Recent Posts
         </h2>
-        <a href="/blog/recent" className="text-purple-600 dark:text-purple-400 hover:underline font-medium">View all →</a>
+        <Link href="/blog/recent" className="text-purple-600 dark:text-purple-400 hover:underline font-medium">View all →</Link>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {posts.map((post) => (

@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import { formatExcerpt } from "@/utils/textFormatter";
 import supabase from "@/supabase-client";
-import { Post } from "@/types/post";
 
 async function getPost(slugs: string) {
   const { data: post, error } = await supabase
@@ -31,7 +30,6 @@ async function getPost(slugs: string) {
   } : null;
 }
 
-
 export default async function PostPage({ params }: { params: { slug: string } }) {
   const post = await getPost(params.slug);
   
@@ -40,7 +38,7 @@ export default async function PostPage({ params }: { params: { slug: string } })
       <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Post not found</h1>
-          <p className="text-gray-600 dark:text-gray-400">The post you're looking for doesn't exist.</p>
+          <p className="text-gray-600 dark:text-gray-400">The post you&apos;re looking for doesn&apos;t exist.</p>
         </div>
       </div>
     );
