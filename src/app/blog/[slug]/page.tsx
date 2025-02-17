@@ -42,11 +42,6 @@ async function getPost(slugs: string): Promise<Post | null> {
   } : null;
 }
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
 
 export default async function PostPage({ params }: { params: { slug: string } }) {
   const post = await getPost(params.slug);
