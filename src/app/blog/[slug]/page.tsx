@@ -40,7 +40,7 @@ export interface NextPageProps<SlugType = string> {
 export default async function Page({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: number }>
 }) {
   const post = await getPost((await params).slug);
 
