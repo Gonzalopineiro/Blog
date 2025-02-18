@@ -4,11 +4,11 @@ import { formatExcerpt } from "@/utils/textFormatter";
 import supabase from "@/supabase-client";
 
 
-async function getPost(slugs: string) {
+async function getPost(slugs: number) {
   const { data: post, error } = await supabase
     .from('Post')
     .select('*')
-    .eq('slug', slugs)
+    .eq('id', slugs)
     .single();
 
   if (error) {
@@ -17,6 +17,7 @@ async function getPost(slugs: string) {
   }
 
   return post ? {
+    id: post.id || 0,
     title: post.Title || '',
     excerpt: formatExcerpt(post.text) || '',
     coverImage: post.coverImage || '/images/ImagePlaceholder.jpeg',

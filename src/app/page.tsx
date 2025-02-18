@@ -21,6 +21,7 @@ async function getPosts() {
 
   // Transform database posts to match Post interface
   const posts = dbPosts?.map(post => ({
+    id: post.id || '',
     title: post.Title || '',
     excerpt: formatExcerpt(post.text) || '',
     coverImage: post.coverImage || '/images/ImagePlaceholder.jpeg',
@@ -38,6 +39,7 @@ async function getPosts() {
 
 //Create a plceholder post
   const placeholderPost: Post = {
+    id: 1,
     title: "Placeholder Post",
     excerpt: "This is a placeholder post. It does not contain any real content.",
     coverImage: "/images/ImagePlaceholder.jpeg",
@@ -59,7 +61,7 @@ export default async function Home() {
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
       <Header />
-      <main className="max-w-4xl mx-auto px-8 py-16">
+      <main className="max-w-4xl mx-auto px-8 py-4">
         <Categories />
         <FeaturedPost post={featuredPost}/>   
         <RecentPosts posts={recentPostsList}/>

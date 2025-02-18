@@ -17,6 +17,7 @@ async function getPosts() {
 
   // Transform database posts to match Post interface
   const posts = dbPosts?.map(post => ({
+    id: post.id || 0,
     title: post.Title || '',
     excerpt: formatExcerpt(post.text) || '',
     coverImage: post.coverImage || '/images/ImagePlaceholder.jpeg',

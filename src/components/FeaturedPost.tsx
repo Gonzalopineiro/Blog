@@ -47,7 +47,7 @@ export default function FeaturedPost({ post }: { post: Post }) {
                   <span className="text-sm text-gray-500 dark:text-gray-400">{formatDate(post.publishedAt)}</span>
                 </div>
               </div>
-              <a href={`/blog/${post.slug}`} className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline font-medium">
+              <a href={`/blog/${post.id}`} className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline font-medium">
                 Read article
                 <span className="text-lg">→</span>
               </a>

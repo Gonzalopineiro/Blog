@@ -32,7 +32,7 @@ export default function PostCard({ post }: { post: Post }) {
             />
             <span className="text-sm text-gray-500 dark:text-gray-400">{formatDate(post.publishedAt)}</span>
           </div>
-          <a href={`/blog/${post.slug}`} className="text-purple-600 dark:text-purple-400 hover:underline font-medium text-sm">Read more →</a>
+          <a href={`/blog/${post.id}`} className="text-purple-600 dark:text-purple-400 hover:underline font-medium text-sm">Read more →</a>
         </div>
       </div>
     </div>
