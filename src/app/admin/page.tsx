@@ -2,6 +2,8 @@ import React from 'react';
 import {auth} from "@/../auth"
 import CreatePost from '@/components/CreatePost';
 
+
+
 export default async function AdminDashboard() {
   const session = await auth() 
   if(!session) { return (

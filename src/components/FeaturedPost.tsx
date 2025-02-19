@@ -29,7 +29,9 @@ export default function FeaturedPost({ post }: { post: Post }) {
             </div>
             <div>
               <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <a href={`/blog/${post.id}`}>
                 {post.title}
+                </a>
               </h3>
               <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">{post.excerpt}</p>
             </div>

@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { formatExcerpt } from "@/utils/textFormatter";
 import supabase from "@/supabase-client";
-
+import { formatDate } from "@/utils/dateFormatter";
 
 async function getPost(slugs: number) {
   const { data: post, error } = await supabase
@@ -100,7 +100,7 @@ export default async function Page({
                   {post.authorName}
                 </span>
                 <span className="text-sm text-gray-500 dark:text-gray-400">
-                  {post.publishedAt}
+                  {formatDate(post.publishedAt)}
                 </span>
               </div>
             </div>

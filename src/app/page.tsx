@@ -36,6 +36,10 @@ async function getPosts() {
   return posts;
 }
 
+function getCategories(posts: Post[]) {
+  const categories = new Set(posts.map(post => post.category));
+  return Array.from(categories);
+}
 
 //Create a plceholder post
   const placeholderPost: Post = {
@@ -53,16 +57,19 @@ async function getPosts() {
 
   const recentPosts = Array(2).fill(placeholderPost);
 
+
+  
 export default async function Home() {
   const posts = await getPosts();
   const featuredPost = posts[0] || placeholderPost;
   const recentPostsList = posts.slice(1, 3).length > 0 ? posts.slice(1, 3) : recentPosts;
+  const categ = await getCategories(posts);
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
-      <Header />
       <main className="max-w-4xl mx-auto px-8 py-4">
-        <Categories />
+        <Header/>
+        <Categories categories={categ}/>
         <FeaturedPost post={featuredPost}/>   
         <RecentPosts posts={recentPostsList}/>
         <Newsletter />

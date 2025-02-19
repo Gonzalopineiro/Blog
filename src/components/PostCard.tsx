@@ -19,7 +19,7 @@ export default function PostCard({ post }: { post: Post }) {
           <span className="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-xs font-medium rounded-full">{post.category}</span>
           <span className="text-xs text-gray-400 dark:text-gray-500 self-center">{post.readingTime} read</span>
         </div>
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">{post.title}</h3>
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors"><a href={`/blog/${post.id}`} >{post.title}</a></h3>
         <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">{post.excerpt}</p>
         <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-2">
