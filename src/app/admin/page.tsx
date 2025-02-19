@@ -2,13 +2,14 @@ import React from 'react';
 import {auth} from "@/../auth"
 import CreatePost from '@/components/CreatePost';
 
-
+import Signin from "@/components/Sign-in";
 
 export default async function AdminDashboard() {
   const session = await auth() 
   if(!session) { return (
-    <div>
+    <div className='flex flex-col justify-center items-center '>
       <h1>You are not logged in</h1>
+      <Signin />
     </div>)
     } else {
     }
